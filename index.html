@@ -12,33 +12,43 @@
 </head>
 <body>
     <!-- Header / Navigation -->
+<!-- ค้นหาและแทนที่ส่วน <header> เดิมด้วยตัวนี้ -->
 <header>
     <nav class="navbar">
-        <div class="logo">TRIPLE<span>S+</span></div>
+        <div class="logo">
+            <a href="#home">TRIPLE<span>S+</span></a>
+        </div>
+
+        <!-- Desktop Menu -->
         <ul class="nav-links">
-            <li><a href="#home">หน้าแรก</a></li>
+            <li><a href="#home" class="active">หน้าแรก</a></li>
             <li><a href="#about">เกี่ยวกับเรา</a></li>
-            <!-- แก้ไขตรงนี้: เปลี่ยนจาก #services เป็น #products และเปลี่ยนข้อความเป็น สินค้า -->
-            <li><a href="#products">สินค้า</a></li> 
+            <li><a href="#products">สินค้า</a></li>
             <li><a href="#contact">ติดต่อเรา</a></li>
         </ul>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
     </nav>
 </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>บริษัท <span class="text-red">ทริปเปิ้ลเอส พลัส</span> จํากัด</h1>
-            <p>ผู้จัดจําหน่ายและติดตั้ง ผลิตภัณฑ์ไอที ระบบเน็ตเวิร์ค ระบบกล้องวงจรปิด <br> ระบบเข้า-ออกอัตโนมัติ โซลูชั่นครบวงจร ซอฟต์แวร์ และพร้อมบริการหลังการขายที่ดี</p>
-            <!-- แก้ไขตรงนี้ด้วยเพื่อให้สอดคล้องกัน: เปลี่ยน href เป็น #products -->
+<section class="hero" id="home">
+    <!-- เพิ่ม Overlay สำหรับเอฟเฟกต์แสง -->
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <div class="hero-badge">Innovative Technology Solutions</div>
+        <h1>บริษัท <span class="text-red">ทริปเปิ้ลเอส พลัส</span> จํากัด</h1>
+        
+        <!-- ส่วนที่มีลูกเล่น Typing Effect -->
+        <p class="hero-typing">
+            เราคือผู้เชี่ยวชาญด้าน <span class="typewriter" data-words='["ระบบกล้องวงจรปิด CCTV", "ระบบเน็ตเวิร์คครบวงจร", "โซลูชั่นซอฟต์แวร์", "ระบบเข้า-ออกอัตโนมัติ"]'></span>
+        </p>
+        
+        <div class="hero-btns">
             <a href="#products" class="btn-primary">ดูสินค้าของเรา</a>
+            <a href="#contact" class="btn-secondary">ปรึกษาเราตอนนี้</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Partner Marquee Section -->
         <section class="partners">
@@ -113,11 +123,11 @@
             </div>
             <div class="prod-nav-item" onclick="scrollToProduct('software')">
                 <div class="nav-icon"><i class="fas fa-code"></i></div>
-                <span>Software & OS</span>
+                <span>Application Software</span>
             </div>
             <div class="prod-nav-item" onclick="scrollToProduct('sound')">
-                <div class="nav-icon"><i class="fas fa-projector"></i></div>
-                <span>Projector & Sound</span>
+                <div class="nav-icon"><i class="fas fa-video"></i></div> <!-- เปลี่ยนจาก fa-projector เป็น fa-video -->
+                <span>Projector, Sound & Display</span>
             </div>
             <div class="prod-nav-item" onclick="scrollToProduct('school')">
                 <div class="nav-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -132,118 +142,279 @@
         <!-- ส่วนที่ 2: รายละเอียดเนื้อหาเรียงลงมา (Detail Cards) -->
         <div class="products-list-vertical">
             
-            <!-- Card 1 -->
-            <!-- Card 1: Computer & Accessories -->
-        <div class="product-detail-card" id="pc">
-            <div class="card-image"><i class="fas fa-laptop"></i></div>
-            <div class="card-info">
-                <h3 class="card-main-title">Computer & Accessories</h3>
-                <p class="card-desc">ศูนย์รวมอุปกรณ์คอมพิวเตอร์และอุปกรณ์เสริมครบวงจร ที่คัดสรรมาเพื่อประสิทธิภาพสูงสุดในการทำงานของคุณ</p>
-
-                <!-- ตารางอุปกรณ์ 32 รายการ -->
+<!-- Card 1: Computer & Accessories -->
+<div class="product-detail-card pc-custom-layout" id="pc">
+    <div class="pc-main-wrapper">
+        <div class="pc-content-container">
+            <!-- ฝั่งซ้าย: Grid ไอคอน 32 รายการ -->
+            <div class="pc-left-grid">
+                <h3 class="pc-title-simple">Computer & Accessories</h3>
                 <div class="accessories-master-grid">
                     <!-- Row 1 -->
-                    <div class="acc-box"><i class="fas fa-mouse"></i><span>Mouse</span></div>
-                    <div class="acc-box"><i class="fas fa-keyboard"></i><span>Keyboard</span></div>
-                    <div class="acc-box"><i class="fas fa-mouse-pointer"></i><span>Gaming Mouse</span></div>
-                    <div class="acc-box"><i class="fas fa-volume-up"></i><span>Speakers</span></div>
-                    <div class="acc-box"><i class="fas fa-headphones"></i><span>Headphones</span></div>
-                    <div class="acc-box"><i class="fas fa-microphone"></i><span>Microphone</span></div>
-                    <div class="acc-box"><i class="fas fa-video"></i><span>Webcam</span></div>
-                    <div class="acc-box"><i class="fas fa-usb"></i><span>USB Flash Drive</span></div>
+                    <div class="acc-box"><img src="pc_product/pc1.png" alt="Mouse"><span>Mouse</span></div>
+                    <div class="acc-box"><img src="pc_product/pc2.png" alt="Keyboard"><span>Keyboard</span></div>
+                    <div class="acc-box"><img src="pc_product/pc3.png" alt="Gaming Mouse"><span>Gaming Mouse</span></div>
+                    <div class="acc-box"><img src="pc_product/pc4.png" alt="Speakers"><span>Speakers</span></div>
+                    <div class="acc-box"><img src="pc_product/pc5.png" alt="Headphones"><span>Headphones</span></div>
+                    <div class="acc-box"><img src="pc_product/pc6.png" alt="Microphone"><span>Microphone</span></div>
+                    <div class="acc-box"><img src="pc_product/pc7.png" alt="Webcam"><span>Webcam</span></div>
+                    <div class="acc-box"><img src="pc_product/pc8.png" alt="USB Flash Drive"><span>USB Flash Drive</span></div>
 
                     <!-- Row 2 -->
-                    <div class="acc-box"><i class="fas fa-vector-square"></i><span>Mousepad</span></div>
-                    <div class="acc-box"><i class="fas fa-bolt"></i><span>Surge Protector</span></div>
-                    <div class="acc-box"><i class="fas fa-hubspot"></i><span>USB Hub</span></div>
-                    <div class="acc-box"><i class="fas fa-stream"></i><span>Cable Ties</span></div>
-                    <div class="acc-box"><i class="fas fa-spray-can"></i><span>Screen Cleaning Kit</span></div>
-                    <div class="acc-box"><i class="fas fa-print"></i><span>Printer</span></div>
-                    <div class="acc-box"><i class="fas fa-laptop-code"></i><span>Laptop Stand</span></div>
-                    <div class="acc-box"><i class="fas fa-briefcase"></i><span>Laptop Bag</span></div>
+                    <div class="acc-box"><img src="pc_product/pc9.png" alt="Mousepad"><span>Mousepad</span></div>
+                    <div class="acc-box"><img src="pc_product/pc10.png" alt="Surge Protector"><span>Surge Protector</span></div>
+                    <div class="acc-box"><img src="pc_product/pc11.png" alt="USB Hub"><span>USB Hub</span></div>
+                    <div class="acc-box"><img src="pc_product/pc12.png" alt="Cable Ties"><span>Cable Ties</span></div>
+                    <div class="acc-box"><img src="pc_product/pc13.png" alt="Screen Kit"><span>Screen Kit</span></div>
+                    <div class="acc-box"><img src="pc_product/pc14.png" alt="Printer"><span>Printer</span></div>
+                    <div class="acc-box"><img src="pc_product/pc15.png" alt="Laptop Stand"><span>Laptop Stand</span></div>
+                    <div class="acc-box"><img src="pc_product/pc16.png" alt="Laptop Bag"><span>Laptop Bag</span></div>
 
                     <!-- Row 3 -->
-                    <div class="acc-box"><i class="fas fa-hdd"></i><span>External Hard Drive</span></div>
-                    <div class="acc-box"><i class="fas fa-scanner"></i><span>Scanner</span></div>
-                    <div class="acc-box"><i class="fas fa-keyboard"></i><span>External Keyboard</span></div>
-                    <div class="acc-box"><i class="fas fa-pen-nib"></i><span>Stylus Pen</span></div>
-                    <div class="acc-box"><i class="fas fa-columns"></i><span>Monitor Stand</span></div>
-                    <div class="acc-box"><i class="fas fa-desktop"></i><span>Monitor</span></div>
-                    <div class="acc-box"><i class="fas fa-mouse"></i><span>Wireless Mouse</span></div>
-                    <div class="acc-box"><i class="fas fa-fan"></i><span>Laptop Cooling Pad</span></div>
+                    <div class="acc-box"><img src="pc_product/pc17.png" alt="External HDD"><span>External HDD</span></div>
+                    <div class="acc-box"><img src="pc_product/pc18.png" alt="Scanner"><span>Scanner</span></div>
+                    <div class="acc-box"><img src="pc_product/pc19.png" alt="Ext. Keyboard"><span>Ext. Keyboard</span></div>
+                    <div class="acc-box"><img src="pc_product/pc20.png" alt="Stylus Pen"><span>Stylus Pen</span></div>
+                    <div class="acc-box"><img src="pc_product/pc21.png" alt="Monitor Stand"><span>Monitor Stand</span></div>
+                    <div class="acc-box"><img src="pc_product/pc22.png" alt="Monitor"><span>Monitor</span></div>
+                    <div class="acc-box"><img src="pc_product/pc23.png" alt="Wireless Mouse"><span>Wireless Mouse</span></div>
+                    <div class="acc-box"><img src="pc_product/pc24.png" alt="Cooling Pad"><span>Cooling Pad</span></div>
 
                     <!-- Row 4 -->
-                    <div class="acc-box"><i class="fas fa-chair"></i><span>Gaming Chair</span></div>
-                    <div class="acc-box"><i class="fas fa-gamepad"></i><span>Gaming Controller</span></div>
-                    <div class="acc-box"><i class="fas fa-projector"></i><span>Projector</span></div>
-                    <div class="acc-box"><i class="fas fa-lightbulb"></i><span>Desk Lamp</span></div>
-                    <div class="acc-box"><i class="fas fa-table"></i><span>Desk Organizer</span></div>
-                    <div class="acc-box"><i class="fas fa-headphones-alt"></i><span>Headset Stand</span></div>
-                    <div class="acc-box"><i class="fas fa-headset"></i><span>Handsfree</span></div>
-                    <div class="acc-box"><i class="fas fa-tablet-alt"></i><span>Graphics Tablet</span></div>
+                    <div class="acc-box"><img src="pc_product/pc25.png" alt="Gaming Chair"><span>Gaming Chair</span></div>
+                    <div class="acc-box"><img src="pc_product/pc26.png" alt="Controller"><span>Game Controller</span></div>
+                    <div class="acc-box"><img src="pc_product/pc27.png" alt="Projector"><span>Projector</span></div>
+                    <div class="acc-box"><img src="pc_product/pc28.png" alt="Desk Lamp"><span>Desk Lamp</span></div>
+                    <div class="acc-box"><img src="pc_product/pc29.png" alt="Organizer"><span>Desk Organizer</span></div>
+                    <div class="acc-box"><img src="pc_product/pc30.png" alt="Headset Stand"><span>Headset Stand</span></div>
+                    <div class="acc-box"><img src="pc_product/pc31.png" alt="Handsfree"><span>Handsfree</span></div>
+                    <div class="acc-box"><img src="pc_product/pc32.png" alt="Graphics Tablet"><span>Graphics Tablet</span></div>
                 </div>
-                
-        <!-- ส่วนที่ 2: แบรนด์ที่รองรับ (ตามโลโก้ในรูป) -->
+            </div>
+
+            <!-- ฝั่งขวา: รูปภาพประกอบ computer.png -->
+            <div class="pc-right-image">
+                <img src="computer.png" alt="Computer Solutions">
+            </div>
+        </div>
+
+        <!-- ส่วนที่ 2: แบรนด์ที่รองรับ (อยู่ด้านล่างสุดของ Card) -->
         <div class="brand-section">
             <h4>Authorized Brands & Partners</h4>
             <div class="brand-flex">
-                <span>DELL</span><span>HP</span><span>ACER</span><span>ASUS</span><span>LENOVO</span>
-                <span>APPLE</span><span>AMD</span><span>INTEL</span><span>LOGITECH</span><span>NVIDIA</span>
-                <span>SEAGATE</span><span>WD</span><span>EPSON</span><span>SAMSUNG</span><span>CANON</span>
-                <span>BROTHER</span><span>PANASONIC</span><span>APC</span><span>SYNDOME</span><span>SANDISK</span>
+                <!-- ตัวอย่างการใส่โลโก้ (เปลี่ยนเส้นทางไฟล์ src ตามจริง) -->
+                <div class="brand-logo-item"><img src="pc_logo/dell.png" alt="DELL"></div>
+                <div class="brand-logo-item"><img src="pc_logo/hp.png" alt="HP"></div>
+                <div class="brand-logo-item"><img src="pc_logo/acer.png" alt="ACER"></div>
+                <div class="brand-logo-item"><img src="pc_logo/asus.png" alt="ASUS"></div>
+                <div class="brand-logo-item"><img src="pc_logo/lenovo.png" alt="LENOVO"></div>
+                <div class="brand-logo-item"><img src="pc_logo/apple.png" alt="APPLE"></div>
+                <div class="brand-logo-item"><img src="pc_logo/amd.png" alt="AMD"></div>
+                <div class="brand-logo-item"><img src="pc_logo/intel.png" alt="INTEL"></div>
+                <div class="brand-logo-item"><img src="pc_logo/logitech.png" alt="LOGITECH"></div>
+                <div class="brand-logo-item"><img src="pc_logo/nvidia.png" alt="NVIDIA"></div>
+                <div class="brand-logo-item"><img src="pc_logo/seagate.png" alt="SEAGATE"></div>
+                <div class="brand-logo-item"><img src="pc_logo/wd.png" alt="WD"></div>
+                <div class="brand-logo-item"><img src="pc_logo/epson.png" alt="EPSON"></div>
+                <div class="brand-logo-item"><img src="pc_logo/samsung.png" alt="SAMSUNG"></div>
+                <div class="brand-logo-item"><img src="pc_logo/canon.png" alt="CANON"></div>
+                <div class="brand-logo-item"><img src="pc_logo/brother.png" alt="BROTHER"></div>
+                <div class="brand-logo-item"><img src="pc_logo/panasonic.png" alt="PANASONIC"></div>
+                <div class="brand-logo-item"><img src="pc_logo/apc.png" alt="APC"></div>
+                <div class="brand-logo-item"><img src="pc_logo/syndome.png" alt="SYNDOME"></div>
+                <div class="brand-logo-item"><img src="pc_logo/sandisk.png" alt="SANDISK"></div>
             </div>
         </div>
     </div>
 </div>
 
-            <!-- Card 2 -->
-            <div class="product-detail-card" id="network">
-                <div class="card-image"><i class="fas fa-network-wired"></i></div>
-                <div class="card-info">
-                    <!-- แถบหัวข้อสีแดงตามรูป -->
-                    <h3 class="card-main-title red-banner">Networking</h3>
-                    <p class="card-desc">ผู้วางระบบและจัดจำหน่ายอุปกรณ์โครงข่ายเน็ตเวิร์คครบวงจร ตั้งแต่ระบบสายสัญญาณไปจนถึงอุปกรณ์บริหารจัดการระบบเครือข่ายระดับองค์กร</p>
+                    <!-- Card 2: Networking -->
+            <div class="product-detail-card network-custom-layout" id="network">
+                <h3 class="card-main-title red-banner">Networking</h3>
+                
+                <!-- ส่วนที่ 1: Grid สินค้า 6 หมวด -->
+                <div class="net-main-grid">
+                    <!-- Item 1 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net1.png" alt="Fiber Optic" class="net-product-img">
+                        <div class="net-blue-box">Fiber Optic</div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net2.png" alt="LAN Wire" class="net-product-img">
+                        <div class="net-blue-box">LAN Wire</div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net3.png" alt="Switch Hub" class="net-product-img">
+                        <div class="net-blue-box">Switch Hub & SFP</div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net4.png" alt="Access Point" class="net-product-img">
+                        <div class="net-blue-box">Access Point</div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net5.png" alt="Router" class="net-product-img">
+                        <div class="net-blue-box">Router wireless & sim</div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="net-card-item">
+                        <img src="net_product/net6.png" alt="Accessories" class="net-product-img">
+                        <div class="net-blue-box">Accessories</div>
+                    </div>
+                </div>
 
-                    <!-- ส่วนที่ 1: หมวดหมู่สินค้า 6 หมวด (ตามกล่องสีฟ้าในรูป) -->
-                    <div class="net-categories-grid">
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-bolt"></i></div>
-                            <div class="net-box-text">Fiber Optic</div>
+                <div class="brand-section">
+                    <h4>Authorized Brands & Partners</h4>
+                    <div class="brand-flex">
+                        <div class="brand-logo-item"><img src="net_logo/Cisco.png" alt="Cisco"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Huawei.png" alt="Huawei"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Aruba.png" alt="Aruba"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Nutanix.png" alt="Nutanix"></div>
+                        <div class="brand-logo-item"><img src="net_logo/TP-Link.png" alt="TP-Link"></div>
+                        <div class="brand-logo-item"><img src="net_logo/AMP.png" alt="AMP"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Link.jpg" alt="Link"></div>
+                        <div class="brand-logo-item"><img src="net_logo/HPE.png" alt="HPE"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Ruijie.png" alt="Ruijie"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Mikrotik.png" alt="Mikrotik"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Ruckus.png" alt="Ruckus"></div>
+                        <div class="brand-logo-item"><img src="net_logo/Fortinet.png" alt="Fortinet"></div>
+                    </div>
+                </div>
+            </div>
+          
+                        <!-- Card 3: CCTV & Access Control -->
+            <div class="product-detail-card cctv-custom-layout" id="cctv">
+                <div class="cctv-wrapper">
+                    <h3 class="card-main-title">CCTV & Access Control</h3>
+                    
+                    <!-- ส่วนรูปภาพ 2 รูป -->
+                    <div class="cctv-images-container">
+                        <div class="cctv-img-box">
+                            <img src="cctv_product/cctv_info.png" alt="CCTV Solutions">
                         </div>
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-ethernet"></i></div>
-                            <div class="net-box-text">LAN Wire</div>
-                        </div>
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-server"></i></div>
-                            <div class="net-box-text">Switch Hub & SFP</div>
-                        </div>
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-wifi"></i></div>
-                            <div class="net-box-text">Access Point</div>
-                        </div>
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-router"></i></div>
-                            <div class="net-box-text">Router Wireless & SIM</div>
-                        </div>
-                        <div class="net-item">
-                            <div class="net-box-icon"><i class="fas fa-tools"></i></div>
-                            <div class="net-box-text">Accessories</div>
+                        <div class="cctv-img-box">
+                            <img src="cctv_product/parking_info.png" alt="Access Control Solutions">
                         </div>
                     </div>
 
-                    <!-- ส่วนที่ 2: แบรนด์เน็ตเวิร์ค (12 แบรนด์ตามรูป) -->
+                    <!-- ส่วนแบรนด์สินค้า -->
                     <div class="brand-section">
-                        <h4>Networking Trusted Brands</h4>
+                        <h4>Authorized Brands & Partners</h4>
                         <div class="brand-flex">
-                            <span>CISCO</span><span>HUAWEI</span><span>ARUBA</span><span>NUTANIX</span>
-                            <span>TP-LINK</span><span>AMP</span><span>LINK</span><span>HPE</span>
-                            <span>RUIJIE</span><span>MIKROTIK</span><span>RUCKUS</span><span>FORTINET</span>
+                            <div class="brand-logo-item"><img src="cctv_logo/dahua.png" alt="Dahua"></div>
+                            <div class="brand-logo-item"><img src="cctv_logo/hikvision.png" alt="Hikvision"></div>
+                            <div class="brand-logo-item"><img src="cctv_logo/unv.png" alt="UNV"></div>
+                            <div class="brand-logo-item"><img src="cctv_logo/hip.png" alt="HIP"></div>
+                            <div class="brand-logo-item"><img src="cctv_logo/zkteco.png" alt="ZKTeco"></div>
                         </div>
                     </div>
                 </div>
             </div>
-                        <!-- (ใส่ content-box ให้ครบ 8 อันตามลำดับ index 0-7) -->
+
+
+           <!-- Card 4: Storage & Cloud -->
+            <div class="product-detail-card cloud-custom-layout" id="cloud">
+                <div class="cloud-wrapper">
+                    <h3 class="card-main-title">Storage & Cloud Solution</h3>
+                    
+                    <div class="cloud-collage-grid-v2">
+                        <!-- คอลัมน์ซ้าย (กว้าง 1 ส่วน) -->
+                        <div class="cloud-col-left">
+                            <div class="cloud-img-item">
+                                <img src="cloud_product/cloud1.png" alt="Storage 1">
+                            </div>
+                            <div class="cloud-img-item">
+                                <img src="cloud_product/cloud4.png" alt="Storage 2">
+                            </div>
+                        </div>
+                        
+                        <!-- คอลัมน์ขวา (กว้าง 2 ส่วน) -->
+                        <div class="cloud-col-right">
+                            <div class="cloud-img-item">
+                                <img src="cloud_product/cloud2.png" alt="Cloud 1">
+                            </div>
+                            <div class="cloud-img-item">
+                                <img src="cloud_product/cloud3.png" alt="Cloud 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ส่วนแบรนด์สินค้า (เหมือนเดิม) -->
+                    <div class="brand-section">
+                        <h4>Authorized Brands & Partners</h4>
+                        <div class="brand-flex">
+                            <div class="brand-logo-item"><img src="cloud_logo/qnap.png" alt="QNAP"></div>
+                            <div class="brand-logo-item"><img src="cloud_logo/synology.png" alt="Synology"></div>
+                            <div class="brand-logo-item"><img src="cloud_logo/aws.png" alt="AWS"></div>
+                            <div class="brand-logo-item"><img src="cloud_logo/sis_cloud.png" alt="SiS Cloud"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Software & OS -->
+<div class="product-detail-card software-custom-layout" id="software">
+    <div class="software-wrapper">
+        <h3 class="card-main-title">Software & OS</h3>
+        
+        <div class="software-content-grid">
+            <!-- แถวที่ 1: Windows & Microsoft Office -->
+            <div class="soft-row-top">
+                <div class="win-box">
+                    <img src="soft_product/win11.png" alt="Windows 11 Pro">
+                </div>
+                <div class="office-group">
+                    <img src="soft_product/office_all.png" alt="Microsoft Office 365">
+                </div>
+            </div>
+
+            <!-- แถวที่ 2: Adobe Creative Cloud Suite -->
+            <div class="soft-row-adobe">
+                <div class="adobe-main-logo">
+                    <img src="soft_product/adobe_logo.png" alt="Adobe">
+                </div>
+                <div class="adobe-icons-grid">
+                    <img src="soft_product/adobe_icons.png" alt="Adobe Apps">
+                </div>
+            </div>
+
+            <!-- แถวที่ 3: Foxit, SAP, Antivirus และ Zoom -->
+            <div class="soft-row-bottom">
+                <div class="bottom-left-group">
+                    <div class="sap-foxit-row">
+                        <img src="soft_product/foxit.png" alt="Foxit" class="foxit-img">
+                        <img src="soft_product/sap.png" alt="SAP Business One" class="sap-img">
+                    </div>
+                    <div class="antivirus-row">
+                        <img src="soft_product/av_group.png" alt="Antivirus McAfee TrendMicro Eset Kaspersky">
+                    </div>
+                </div>
+                <div class="bottom-right-zoom">
+                    <img src="soft_product/zoom_info.png" alt="Zoom Meeting">
+                </div>
+            </div>
+        </div>
+
+        <!-- ส่วนแบรนด์สินค้า -->
+        <div class="brand-section">
+            <h4>Authorized Brands & Partners</h4>
+            <div class="brand-flex">
+                <div class="brand-logo-item"><img src="soft_logo/microsoft.png" alt="Microsoft"></div>
+                <div class="brand-logo-item"><img src="soft_logo/adobe.png" alt="Adobe"></div>
+                <div class="brand-logo-item"><img src="soft_logo/sap.png" alt="SAP"></div>
+                <div class="brand-logo-item"><img src="soft_logo/mcafee.png" alt="McAfee"></div>
+                <div class="brand-logo-item"><img src="soft_logo/trendmicro.png" alt="Trend Micro"></div>
+                <div class="brand-logo-item"><img src="soft_logo/eset.png" alt="ESET"></div>
+                <div class="brand-logo-item"><img src="soft_logo/kaspersky.png" alt="Kaspersky"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
                     </div>
                 </div>
             </div>

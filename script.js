@@ -39,17 +39,18 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.service-card, .about-text, .about-img').forEach(el => {
+// ส่วนเดิมที่มีอยู่แล้ว ให้เพิ่ม , .product-detail-card เข้าไปในวงเล็บ
+document.querySelectorAll('.service-card, .about-text, .about-img, .product-detail-card, .section-title, .prod-nav-item').forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease-out';
+    el.style.transform = 'translateY(40px)'; // ปรับจาก 30 เป็น 40 เพื่อให้เห็นการเลื่อนชัดขึ้น
+    el.style.transition = 'all 0.8s ease-out'; // ปรับเวลาเป็น 0.8s ให้ดูนุ่มนวลขึ้น
     observer.observe(el);
 });
 
 function scrollToProduct(id) {
     const element = document.getElementById(id);
     if (element) {
-        const headerOffset = 100; 
+        const headerOffset = 90; // Adjust based on your header height
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -57,7 +58,107 @@ function scrollToProduct(id) {
             top: offsetPosition,
             behavior: "smooth"
         });
-        
-        // ลบส่วนที่เปลี่ยนสี Border ออก เพื่อความ Clean
     }
+}
+
+// --- Typewriter Effect ---
+class TypeWriter {
+    constructor(txtElement, words, wait = 3000) {
+        this.txtElement = txtElement;
+        this.words = words;
+        this.txt = '';
+        this.wordIndex = 0;
+        this.wait = parseInt(wait, 10);
+        this.type();
+        this.isDeleting = false;
+    }
+
+    type() {
+        const current = this.wordIndex % this.words.length;
+        const fullTxt = this.words[current];
+
+        if(this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+        let typeSpeed = 100;
+
+        if(this.isDeleting) {
+            typeSpeed /= 2;
+        }
+
+        if(!this.isDeleting && this.txt === fullTxt) {
+            typeSpeed = this.wait;
+            this.isDeleting = true;
+        } else if(this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.wordIndex++;
+            typeSpeed = 500;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
+    }
+}
+
+// Init On DOM Load
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    const txtElement = document.querySelector('.typewriter');
+    if (txtElement) {
+        const words = JSON.parse(txtElement.getAttribute('data-words'));
+        new TypeWriter(txtElement, words);
+    }
+}
+
+// ค้นหาและแก้ส่วน Scroll ใน script.js
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    // อัปเดต Active Link ตาม Section
+    updateActiveLink();
+});
+
+// ระบบ Mobile Menu
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', function() {
+    menuToggle.classList.toggle('is-active');
+    navLinks.classList.toggle('active');
+});
+
+// คลิกที่ลิงก์แล้วปิดเมนูมือถือ (สำหรับหน้า Single Page)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('is-active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// ฟังก์ชันระบุว่าอยู่ส่วนไหนของหน้าจอ (Active State)
+function updateActiveLink() {
+    let fromTop = window.scrollY + 100;
+    
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        let section = document.querySelector(link.hash);
+        
+        if (
+            section.offsetTop <= fromTop &&
+            section.offsetTop + section.offsetHeight > fromTop
+        ) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 }
